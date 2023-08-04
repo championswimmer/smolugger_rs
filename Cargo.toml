@@ -1,0 +1,21 @@
+[package]
+name = "smolugger_rs"
+version = "0.1.0"
+edition = "2021"
+
+
+
+[[bin]]
+name = "smolugger"
+path = "src/smolugger/main.rs"
+
+[[bin]]
+name = "target"
+path = "src/target/main.rs"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.5"
+
