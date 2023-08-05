@@ -14,11 +14,11 @@ fn main() {
 fn fun1(a: u32) -> u32 {
     // generate a random integer below 50
     let rand = rand::thread_rng().gen_range(0..100);
-    return a * rand;
+    a * rand
 }
 
 fn fun2(a: u32) -> u32 {
     // generate a random integer below 50
     let rand = rand::thread_rng().gen_range(0..100);
-    return a * rand;
+    a * rand
 }

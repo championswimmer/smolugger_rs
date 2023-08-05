@@ -1,21 +1,24 @@
-use std::process::{Command, Stdio};
+mod executor;
 
 fn main() {
+    println!("Host process id : {}", std::process::id());
+    let mut cmd = executor::create_process().unwrap();
 
-    let cmd = Command::new("/workspaces/smolugger_rs/target/debug/target")
-        .stdout(Stdio::inherit())
-        .stderr(Stdio::inherit())
-        .spawn();
+    let pid = cmd.id();
+    println!("Child process id: {}", pid);
+    executor::start_tracing(cmd.id());
 
-    let status = cmd.unwrap().wait();
+    println!("Child process pc: {:x}", executor::get_pc(pid));
 
-    if status.unwrap().success() {
+    executor::dbg_cont(pid);
+
+    println!("Child process pc: {:x}", executor::get_pc(pid));
+
+    let status = cmd.wait().unwrap();
+
+    if status.success() {
         println!("Command executed successfully");
     } else {
         println!("Command failed");
     }
-
-    return;
-
-
 }
