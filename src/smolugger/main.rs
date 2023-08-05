@@ -2,7 +2,7 @@ use std::process::{Command, Stdio};
 
 fn main() {
 
-    let cmd = Command::new("/Users/championswimmer/Development/Rust/smolugger_rs/target/debug/target")
+    let cmd = Command::new("/workspaces/smolugger_rs/target/debug/target")
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
         .spawn();
